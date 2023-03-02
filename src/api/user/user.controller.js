@@ -8,6 +8,10 @@ const signUp = async (req, res) => {
 
         const newUser = await new User(req.body);
 
+        if (req.file) {
+          newUser.photo = req.file.path;
+        }
+
         newUser.save();
 
         return res.json(newUser);
