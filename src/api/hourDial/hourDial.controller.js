@@ -8,10 +8,9 @@ const createHourDial = async (req, res) => {
 
         const newHourDial = await new HourDial(req.body);
         newHourDial.save();
-        console.log(newHourDial);
+
         const userUpdate = await User.findById(idUser);
         userUpdate.hourDials.push(newHourDial._id);
-        console.log(userUpdate);
 
         const userUpdated = await User.findByIdAndUpdate(idUser, userUpdate, {new: true}).populate({
             path : 'hourDials',

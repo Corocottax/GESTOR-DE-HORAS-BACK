@@ -26,7 +26,6 @@ const loginUser = async (req, res, next) => {
           path : 'tasks'
         }
       });
-      console.log(userDB);
       if (!userDB) {
         return res.json("Nombre de usuario incorrecto");
       }
