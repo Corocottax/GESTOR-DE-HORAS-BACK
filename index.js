@@ -1,5 +1,6 @@
 const express = require("express");
 require("dotenv").config();
+const cors = require("cors");
 
 const indexRoutes = require("./src/api/index/index.routes");
 const hourDialRoutes = require("./src/api/hourDial/hourDial.routes");
@@ -15,7 +16,9 @@ cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.API_KEY,
     api_secret: process.env.API_SECRET,
-})
+});
+
+server.use(cors());
 
 server.use(express.json())
 
